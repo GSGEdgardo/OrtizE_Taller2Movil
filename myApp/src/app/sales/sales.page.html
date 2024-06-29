@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial de Compras</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Logout
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let sale of sales">
+      <ion-label>
+        <h2>{{ sale.productName }}</h2>
+        <p>Fecha: {{ sale.purchaseDate | date }}</p>
+        <p>Tipo: {{ sale.productType }}</p>
+        <p>Precio Unitario: {{ sale.productPrice }}</p>
+        <p>Cantidad: {{ sale.quantity }}</p>
+        <p>Precio Total: {{ sale.totalPrice }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
