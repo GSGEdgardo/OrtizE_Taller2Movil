@@ -23,21 +23,34 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.initializeForm();
+  }
 
-  onLogin() {
+  initializeForm() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  login(): void {
+    this.errorMessage = '';
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      this.accountService.login(email, password).subscribe({
-        next: (res) => {
-          this.router.navigate(['/home']);
+      this.accountService.login(this.loginForm.value).subscribe({
+        next: () => {
+          const account = this.accountService.currentAccountValue;
+          if (account?.roleId === 2) {
+            this.router.navigateByUrl('/sales');
+          }
         },
-        error: (err) => {
-          this.errorMessage = 'Credenciales incorrectas. Por favor, inténtalo de nuevo.';
+        error: error => {
+          this.errorMessage = 'Las credenciales ingresadas no se encuentran en el sistema.';
+          console.error("Fallido", error);
         }
       });
     } else {
-      this.errorMessage = 'Ambos campos son obligatorios.';
+      this.errorMessage = 'Por favor, complete todos los campos.'
     }
   }
 }

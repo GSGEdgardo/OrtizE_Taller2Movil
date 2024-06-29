@@ -1,7 +1,14 @@
 export interface User {
-    id: number;
-    name: string;
-    email: string;
-    token: string;
-  }
-  
+  id: number;
+  rut: string;
+  name: string;
+  birthday: Date;
+  email: string;
+  isActive: boolean;
+  gender: Gender;
+}
+
+export interface Gender {
+  id: number;
+  type: string;
+}
