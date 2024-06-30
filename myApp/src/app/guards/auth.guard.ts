@@ -1,9 +1,15 @@
 import { Injectable, inject } from '@angular/core';
-import { CanActivate, Router, RouterModule, UrlTree } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { AccountService } from '../services/account.service';
 import { Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
+/**
+ * @description Guard function to protect routes based on user authentication and role.
+ * @param route ActivatedRouteSnapshot The activated route snapshot.
+ * @param state RouterStateSnapshot The router state snapshot.
+ * @returns Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree An observable, promise, or boolean indicating if the route can be activated.
+ */
 export const authGuardFn: (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
@@ -14,17 +20,15 @@ export const authGuardFn: (
   const accountService = inject(AccountService);
   const router = inject(Router);
   const account = accountService.currentAccountValue;
-  console.log('Current account role ID:', account?.roleId);
-  console.log('Current account role type:', account?.roleType);
-  console.log('Current account email:', account?.email);
-  console.log('Current account token:', account?.token);
+  // console.log('Current account role ID:', account?.roleId);
+  // console.log('Current account role type:', account?.roleType);
+  // console.log('Current account email:', account?.email);
+  // console.log('Current account token:', account?.token);
 
-  if(account) {
-    if(account.roleId === 2 && state.url.startsWith('/sales')) {
+  if (account) {
+    if (account.roleId === 2 && state.url.startsWith('/sales')) {
       return true;
     }
   }
   return router.createUrlTree(['/login']);
 }
-
-

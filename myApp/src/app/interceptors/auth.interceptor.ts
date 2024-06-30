@@ -8,6 +8,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private accountService: AccountService) {}
 
+  /**
+   * @description Intercepts HTTP requests to add an Authorization header with the JWT token if the user is authenticated.
+   * @param req HttpRequest<any> The outgoing HTTP request.
+   * @param next HttpHandler The next handler in the chain.
+   * @returns Observable<HttpEvent<any>> An observable of the HTTP event.
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentUser = this.accountService.currentAccountValue;
     if (currentUser && currentUser.token) {

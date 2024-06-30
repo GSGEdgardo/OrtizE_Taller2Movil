@@ -23,10 +23,16 @@ export class LoginPage implements OnInit {
     });
   }
 
+  /**
+   * @description Initializes the component and sets up the login form.
+   */
   ngOnInit(): void {
     this.initializeForm();
   }
 
+  /**
+   * @description Initializes the login form with validation.
+   */
   initializeForm() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,6 +40,9 @@ export class LoginPage implements OnInit {
     });
   }
 
+  /**
+   * @description Logs in the user if the form is valid, and navigates to the sales page if the user has the appropriate role.
+   */
   login(): void {
     this.errorMessage = '';
     if (this.loginForm.valid) {
@@ -50,7 +59,7 @@ export class LoginPage implements OnInit {
         }
       });
     } else {
-      this.errorMessage = 'Por favor, complete todos los campos.'
+      this.errorMessage = 'Por favor, complete todos los campos.';
     }
   }
 }
