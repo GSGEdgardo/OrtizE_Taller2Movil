@@ -1,0 +1,29 @@
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .text-danger {
+    color: var(--ion-color-danger);
+    font-size: 0.9em;
+    margin-top: 0.5em;
+  }
+  
+  @media (min-width: 576px) {
+    .login-form {
+      padding: 1em;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .login-form {
+      padding: 2em;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .login-form {
+      padding: 3em;
+    }
+  }
+  
