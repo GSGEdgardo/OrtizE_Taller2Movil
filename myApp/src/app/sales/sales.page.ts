@@ -14,6 +14,9 @@ export class SalesPage implements OnInit {
 
   constructor(private salesService: SalesService, private accountService: AccountService, private router: Router) {}
 
+  /**
+   * @description Initializes the component, loads user sales if the user is authenticated.
+   */
   ngOnInit() {
     const currentUser = this.accountService.currentAccountValue;
     if (currentUser) {
@@ -23,6 +26,9 @@ export class SalesPage implements OnInit {
     }
   }
 
+  /**
+   * @description Logs out the user and navigates to the login page.
+   */
   logout(): void {
     this.accountService.logout();
     this.router.navigateByUrl('/login');

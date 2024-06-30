@@ -12,6 +12,11 @@ export class SalesService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * @description Gets the sales for a specific user.
+   * @param userId number The ID of the user.
+   * @returns Observable<Sale[]> An observable containing an array of sales.
+   */
   getUserSales(userId: number): Observable<Sale[]> {
     return this.http.get<Sale[]>(`${this.baseUrl}user/${userId}/purchases`);
   }
