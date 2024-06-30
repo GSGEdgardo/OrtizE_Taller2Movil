@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
+<ion-content class="ion-padding">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
     <ion-item>
       <ion-label position="floating">Correo electrónico</ion-label>
       <ion-input formControlName="email" type="email"></ion-input>
@@ -13,6 +13,8 @@
     <div
       *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
       class="text-danger">
+      <div *ngIf="loginForm.controls['email'].errors?.['required']">El correo electrónico es obligatorio.</div>
+      <div *ngIf="loginForm.controls['email'].errors?.['email']">Ingrese un correo electrónico válido.</div>
     </div>
 
     <ion-item>
@@ -25,12 +27,10 @@
       <div *ngIf="loginForm.controls['password'].errors?.['required']">La contraseña es obligatoria.</div>
     </div>
 
-    <ion-button expand="full" type="submit">Inicia sesión</ion-button>
+    <ion-button expand="block" type="submit">Inicia sesión</ion-button>
 
     <div *ngIf="errorMessage" class="text-danger">
       {{ errorMessage }}
     </div>
   </form>
-  <div>
-  </div>
 </ion-content>

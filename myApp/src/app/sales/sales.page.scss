@@ -1,0 +1,60 @@
+.sales-list {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-start: 16px;
+    --inner-padding-end: 16px;
+    --inner-padding-top: 8px;
+    --inner-padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+  
+  ion-label h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  ion-label p {
+    font-size: 1em;
+    margin: 2px 0;
+  }
+  
+  @media (min-width: 576px) {
+    .sales-list {
+      padding: 1em;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .sales-list {
+      padding: 2em;
+    }
+  
+    ion-label h2 {
+      font-size: 1.4em;
+    }
+  
+    ion-label p {
+      font-size: 1.1em;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .sales-list {
+      padding: 3em;
+    }
+  
+    ion-label h2 {
+      font-size: 1.6em;
+    }
+  
+    ion-label p {
+      font-size: 1.2em;
+    }
+  }
+  
